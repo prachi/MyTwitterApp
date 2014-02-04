@@ -11,5 +11,14 @@
 @interface MTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UINavigationController *navigationController1,*navigationController2;
+@property (strong, nonatomic) UITabBarController *tabBarController;
 
+- (BOOL) openURL:(NSURL *)url;
 @end
+
+
+
+
+
+

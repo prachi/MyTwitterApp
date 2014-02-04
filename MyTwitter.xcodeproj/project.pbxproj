@@ -14,13 +14,17 @@
 		B352E00A189FEF49002DE84B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E009189FEF49002DE84B /* main.m */; };
 		B352E00E189FEF49002DE84B /* MTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E00D189FEF49002DE84B /* MTAppDelegate.m */; };
 		B352E011189FEF49002DE84B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B352E00F189FEF49002DE84B /* Main.storyboard */; };
-		B352E014189FEF49002DE84B /* MTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E013189FEF49002DE84B /* MTViewController.m */; };
 		B352E016189FEF49002DE84B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B352E015189FEF49002DE84B /* Images.xcassets */; };
 		B352E01D189FEF49002DE84B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B352E01C189FEF49002DE84B /* XCTest.framework */; };
 		B352E01E189FEF49002DE84B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B352DFFD189FEF49002DE84B /* Foundation.framework */; };
 		B352E01F189FEF49002DE84B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B352E001189FEF49002DE84B /* UIKit.framework */; };
 		B352E027189FEF49002DE84B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B352E025189FEF49002DE84B /* InfoPlist.strings */; };
 		B352E029189FEF49002DE84B /* MyTwitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E028189FEF49002DE84B /* MyTwitterTests.m */; };
+		B352E034189FF2C7002DE84B /* MTMasterViewController1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E033189FF2C7002DE84B /* MTMasterViewController1ViewController.m */; };
+		B352E03A189FF66F002DE84B /* MTDetailViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E039189FF66F002DE84B /* MTDetailViewController1.m */; };
+		B3727AB418A0C9F3001450F3 /* MTMasterViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = B3727AB318A0C9F3001450F3 /* MTMasterViewController2.m */; };
+		B3727ABA18A0F574001450F3 /* MTMyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3727AB918A0F574001450F3 /* MTMyAppDelegate.m */; };
+		B3727ABD18A0F818001450F3 /* MTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3727ABC18A0F818001450F3 /* MTWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +49,22 @@
 		B352E00C189FEF49002DE84B /* MTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTAppDelegate.h; sourceTree = "<group>"; };
 		B352E00D189FEF49002DE84B /* MTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTAppDelegate.m; sourceTree = "<group>"; };
 		B352E010189FEF49002DE84B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B352E012189FEF49002DE84B /* MTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTViewController.h; sourceTree = "<group>"; };
-		B352E013189FEF49002DE84B /* MTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTViewController.m; sourceTree = "<group>"; };
 		B352E015189FEF49002DE84B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B352E01B189FEF49002DE84B /* MyTwitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTwitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B352E01C189FEF49002DE84B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B352E024189FEF49002DE84B /* MyTwitterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyTwitterTests-Info.plist"; sourceTree = "<group>"; };
 		B352E026189FEF49002DE84B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B352E028189FEF49002DE84B /* MyTwitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTwitterTests.m; sourceTree = "<group>"; };
+		B352E032189FF2C7002DE84B /* MTMasterViewController1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMasterViewController1ViewController.h; sourceTree = "<group>"; };
+		B352E033189FF2C7002DE84B /* MTMasterViewController1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMasterViewController1ViewController.m; sourceTree = "<group>"; };
+		B352E038189FF66F002DE84B /* MTDetailViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailViewController1.h; sourceTree = "<group>"; };
+		B352E039189FF66F002DE84B /* MTDetailViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailViewController1.m; sourceTree = "<group>"; };
+		B3727AB218A0C9F3001450F3 /* MTMasterViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMasterViewController2.h; sourceTree = "<group>"; };
+		B3727AB318A0C9F3001450F3 /* MTMasterViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMasterViewController2.m; sourceTree = "<group>"; };
+		B3727AB818A0F574001450F3 /* MTMyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMyAppDelegate.h; sourceTree = "<group>"; };
+		B3727AB918A0F574001450F3 /* MTMyAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMyAppDelegate.m; sourceTree = "<group>"; };
+		B3727ABB18A0F818001450F3 /* MTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTWebViewController.h; sourceTree = "<group>"; };
+		B3727ABC18A0F818001450F3 /* MTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +126,17 @@
 			children = (
 				B352E00C189FEF49002DE84B /* MTAppDelegate.h */,
 				B352E00D189FEF49002DE84B /* MTAppDelegate.m */,
+				B352E032189FF2C7002DE84B /* MTMasterViewController1ViewController.h */,
+				B352E033189FF2C7002DE84B /* MTMasterViewController1ViewController.m */,
+				B352E038189FF66F002DE84B /* MTDetailViewController1.h */,
+				B3727AB218A0C9F3001450F3 /* MTMasterViewController2.h */,
+				B3727AB818A0F574001450F3 /* MTMyAppDelegate.h */,
+				B3727AB918A0F574001450F3 /* MTMyAppDelegate.m */,
+				B3727ABB18A0F818001450F3 /* MTWebViewController.h */,
+				B3727ABC18A0F818001450F3 /* MTWebViewController.m */,
+				B3727AB318A0C9F3001450F3 /* MTMasterViewController2.m */,
+				B352E039189FF66F002DE84B /* MTDetailViewController1.m */,
 				B352E00F189FEF49002DE84B /* Main.storyboard */,
-				B352E012189FEF49002DE84B /* MTViewController.h */,
-				B352E013189FEF49002DE84B /* MTViewController.m */,
 				B352E015189FEF49002DE84B /* Images.xcassets */,
 				B352E004189FEF49002DE84B /* Supporting Files */,
 			);
@@ -250,9 +270,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3727AB418A0C9F3001450F3 /* MTMasterViewController2.m in Sources */,
+				B352E034189FF2C7002DE84B /* MTMasterViewController1ViewController.m in Sources */,
 				B352E00A189FEF49002DE84B /* main.m in Sources */,
-				B352E014189FEF49002DE84B /* MTViewController.m in Sources */,
+				B3727ABA18A0F574001450F3 /* MTMyAppDelegate.m in Sources */,
 				B352E00E189FEF49002DE84B /* MTAppDelegate.m in Sources */,
+				B352E03A189FF66F002DE84B /* MTDetailViewController1.m in Sources */,
+				B3727ABD18A0F818001450F3 /* MTWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +485,7 @@
 				B352E02E189FEF49002DE84B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B352E02F189FEF49002DE84B /* Build configuration list for PBXNativeTarget "MyTwitterTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +494,7 @@
 				B352E031189FEF49002DE84B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
