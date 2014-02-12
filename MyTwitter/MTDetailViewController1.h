@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
-@interface MTDetailViewController1 : UIViewController{
+@interface MTDetailViewController1 : UIViewController <UIAlertViewDelegate> {
    
     IBOutlet UITextView *tweetContent;
+  //  IBOutlet UITextView *tweetContent;
     IBOutlet UILabel *nameLabel;
     IBOutlet UIImageView *profileImage;
+   
 }
 
+@property (strong, nonatomic) IBOutlet UIButton *delete;
 
 @property (strong, nonatomic) id detailItem;
+@property (strong,nonatomic) ACAccount *account;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @end

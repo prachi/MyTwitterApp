@@ -11,7 +11,8 @@
 #import <Social/Social.h>
 
 @interface MTMasterViewController2 : UITableViewController{
-    NSArray *tweets;
+    NSMutableArray *tweets;
+    NSString *text;
     NSMutableArray *num;
     int co;
     int j;

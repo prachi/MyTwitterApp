@@ -9,6 +9,7 @@
 #import "MTMasterViewController1ViewController.h"
 #import "MTDetailViewController1.h"
 
+
 @interface MTMasterViewController1ViewController () <UIAlertViewDelegate>
 
 @property (nonatomic,strong) UIBarButtonItem *AddTweet;
@@ -43,7 +44,7 @@
 - (void)viewDidLoad
 {   co = 0;
     num = [[NSMutableArray alloc] init];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:93/255.0 green:202/255.0 blue:249/255.0 alpha:1];
+    
     [super viewDidLoad];
     account = [[ACAccountStore alloc] init];
     accountType = [account accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -53,6 +54,7 @@
             if ([arrayOfAccounts count] > 0) {
                 twitterAccount = [arrayOfAccounts lastObject];
                 username = twitterAccount.username;
+                NSLog(@"%@",username);
                 [self fetchTimeLineTweets:co];
             }
         }
@@ -70,8 +72,8 @@
     
     self.AddTweet = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(performAddWithAlertView:)];
     [self.navigationItem setRightBarButtonItem:self.AddTweet animated:NO];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationItem.titleView.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:93/255.0 green:202/255.0 blue:249/255.0 alpha:1];
+    self.navigationItem.titleView.tintColor = [UIColor blackColor];
     
     
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
@@ -97,15 +99,15 @@
 - (void)fetchTimeLineTweets:(NSInteger) i
 {
     NSURL *requestAPI = [[NSURL alloc] init];
-    requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1/statuses/home_timeline.json"];
+    requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:@"10000" forKey:@"count"];
+    [parameters setObject:@"1000" forKey:@"count"];
     [parameters setObject:@"1" forKey:@"include_entities"];
     SLRequest *posts = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestAPI parameters:parameters];
     posts.account = twitterAccount;
     [posts performRequestWithHandler:^(NSData *response, NSHTTPURLResponse *urlResponse, NSError *error){
         
-        tweets = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+        tweets = [[NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error] mutableCopy];
         int x = tweets.count;
         dispatch_async(dispatch_get_main_queue(), ^{
             [num insertObject:[NSNumber numberWithInt:x] atIndex:i];
@@ -188,19 +190,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TweetCell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    NSDictionary *tweet = [tweets objectAtIndex:indexPath.row];
-    NSString *text = [tweet objectForKey:@"text"];
-    NSString *name = [[tweet objectForKey:@"user"] objectForKey:@"name"];
+    if(tweets.count>1)
+    { NSDictionary *tweet = [tweets objectAtIndex:indexPath.row];
+      text = [tweet objectForKey:@"text"];
+     // NSString *name = [[tweet objectForKey:@"user"] objectForKey:@"name"];
     
     
     cell.textLabel.text = text;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"by %@", name];
+    cell.textLabel.font = [UIFont fontWithName:@"verdana" size:14.0];
+    cell.textLabel.numberOfLines = 0;
+    [cell.textLabel sizeToFit];
+
+    //cell.detailTextLabel.text = [NSString stringWithFormat:@"By %@", name];
+    
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *imageUrl = [[tweet objectForKey:@"user"] objectForKey:@"profile_image_url"];
@@ -210,13 +218,22 @@
             cell.imageView.image = [UIImage imageWithData:data];
         });
     });
-    
-    
-    
-    
+        return cell;
+    }
     
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize constraint = CGSizeMake(320 - (10 * 2), 20000.0f);
+    CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGFloat height = MAX(size.height, 44.0f);
+    
+    return height + 60;
+
+}
+
 
 - (void)handleSwipeRight:(UISwipeGestureRecognizer *)gestureRecognizer
 {
@@ -239,8 +256,12 @@
     
     MTDetailViewController1 *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail" ];
     NSInteger row = [[self tableView].indexPathForSelectedRow row];
+    if (tweets.count > 1){
     NSDictionary *tweet = [tweets objectAtIndex:row];
     controller.detailItem = tweet;
+    controller.account = twitterAccount;
+    }
+    
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -251,10 +272,13 @@
     if ([segue.identifier isEqualToString:@"ShowTweet"]) {
         
         NSInteger row = [[self tableView].indexPathForSelectedRow row];
-        NSDictionary *tweet = [tweets objectAtIndex:row];
-        self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        NSDictionary *tweet;
+        if (tweets.count >1)
+         tweet = [tweets objectAtIndex:row];
+        self.navigationItem.backBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
         MTDetailViewController1 *detailController = segue.destinationViewController;
         detailController.detailItem = tweet;
+        detailController.account = twitterAccount;
         
         
     }

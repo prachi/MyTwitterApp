@@ -36,17 +36,17 @@
         
         NSString *text = [[tweet objectForKey:@"user"] objectForKey:@"name"];
         NSString *name = [tweet objectForKey:@"text"];
-        /*   int tfollowers = [[(NSDictionary *)tweet objectForKey:@"followers_count"] integerValue];
-         int tfollowing = [[(NSDictionary *)tweet objectForKey:@"friends_count"] integerValue];
-         int ttweetscount = [[(NSDictionary *)tweet objectForKey:@"statuses_count"] integerValue];
-         
-         
-         tweetscount.text = [NSString stringWithFormat:@"%i", ttweetscount];
-         following.text= [NSString stringWithFormat:@"%i", tfollowing];
-         followers.text = [NSString stringWithFormat:@"%i", tfollowers]; */
-        
         nameLabel.text = text;
         tweetContent.text = name;
+        [tweetContent scrollRangeToVisible:NSMakeRange([tweetContent.text length], 0)];
+       
+        UIButton *retweet = [UIButton buttonWithType:UIButtonTypeRoundedRect ];
+        [retweet setTintColor:[UIColor blackColor]];
+        [retweet setTitle:@"retweet" forState:UIControlStateNormal];
+        [retweet addTarget:self action:@selector(retweet:) forControlEvents:UIControlEventTouchUpInside];
+        retweet.frame = CGRectMake(120, 300, 80, 40);
+        [self.view addSubview:retweet];
+        
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSString *imageUrl = [[tweet objectForKey:@"user"] objectForKey:@"profile_image_url"];
@@ -59,10 +59,38 @@
     }
 }
 
+-(void)retweet:(id)sender{
+    NSDictionary *tweet = self.detailItem;
+    NSString *id = [tweet objectForKey:@"id"];
+    NSString *retweet = [NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/retweet/%@.json",id];
+    NSURL *retweetURL = [NSURL URLWithString:retweet];
+    SLRequest *twitterRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:retweetURL parameters:nil];
+    twitterRequest.account = self.account;
+    [twitterRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([urlResponse statusCode] == 200) {
+                return;
+            }
+            else if (error) {
+                NSLog(@"Error: %@", error.localizedDescription);
+                return;
+            }
+            else if ([urlResponse statusCode] == 403)
+                NSLog(@"its yr profile dude");
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Retweeted by you" message:twitterRequest.account.username delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK",nil];
+            [alertView show];
+            
+        });
+    }];
+    
+}
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+   	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
     
     

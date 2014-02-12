@@ -10,13 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyTwitter/MTMasterViewController2.m"
-            timestampString = "413201483.010547"
+            timestampString = "413917838.860747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "@implementation MTMasterViewController2"
-            landmarkType = "3">
+            startingLineNumber = "322"
+            endingLineNumber = "322">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

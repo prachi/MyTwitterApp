@@ -11,7 +11,8 @@
 #import <Social/Social.h>
 
 @interface MTMasterViewController1ViewController : UITableViewController {
- NSArray *tweets;
+ NSMutableArray *tweets;
+ NSString *text;
  NSMutableArray *num;
  int co;
  int j;
@@ -25,6 +26,7 @@
 }
 
 - (void)fetchTimeLineTweets:(int) co;
+-(CGSize) sizeForLabel:(UILabel *)label;
 
 @end
 
