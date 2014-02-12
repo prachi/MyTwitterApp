@@ -17,7 +17,7 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+/*- (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
@@ -25,7 +25,7 @@
         // Update the view.
         [self configureView];
     }
-}
+}*/
 
 - (void)configureView
 {
@@ -39,14 +39,14 @@
         nameLabel.text = text;
         tweetContent.text = name;
         [tweetContent scrollRangeToVisible:NSMakeRange([tweetContent.text length], 0)];
-       
+        if (![[[tweet objectForKey:@"user"] objectForKey:@"screen_name"] isEqualToString:self.username]){
         UIButton *retweet = [UIButton buttonWithType:UIButtonTypeRoundedRect ];
         [retweet setTintColor:[UIColor blackColor]];
         [retweet setTitle:@"retweet" forState:UIControlStateNormal];
         [retweet addTarget:self action:@selector(retweet:) forControlEvents:UIControlEventTouchUpInside];
         retweet.frame = CGRectMake(120, 300, 80, 40);
         [self.view addSubview:retweet];
-        
+        }
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSString *imageUrl = [[tweet objectForKey:@"user"] objectForKey:@"profile_image_url"];

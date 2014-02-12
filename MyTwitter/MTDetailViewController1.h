@@ -23,6 +23,7 @@
 
 @property (strong, nonatomic) id detailItem;
 @property (strong,nonatomic) ACAccount *account;
+@property (strong, nonatomic) NSString *username;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @end

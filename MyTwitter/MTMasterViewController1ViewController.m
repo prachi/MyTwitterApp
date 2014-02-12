@@ -54,7 +54,6 @@
             if ([arrayOfAccounts count] > 0) {
                 twitterAccount = [arrayOfAccounts lastObject];
                 username = twitterAccount.username;
-                NSLog(@"%@",username);
                 [self fetchTimeLineTweets:co];
             }
         }

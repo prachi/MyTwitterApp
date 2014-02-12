@@ -285,6 +285,7 @@
     if (tweets.count>1)
     { NSDictionary *tweet = [tweets objectAtIndex:row];
     controller.detailItem = tweet;
+    controller.username = username;
     }
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -303,7 +304,9 @@
         MTDetailViewController1 *detailController = segue.destinationViewController;
         detailController.detailItem = tweet;
         detailController.account = twitterAccount;
-        
+       detailController.username = username;
+       NSLog(@"%@",detailController.username);
+
         
     }
 
